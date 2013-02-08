@@ -1,4 +1,4 @@
-package com.collinsrj;
+package ie.dcu.collinsrj;
 
 /**
  * Hello world!
