@@ -1,13 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.collinsrj</groupId>
+  <groupId>ie.dcu.collinsrj</groupId>
   <artifactId>text</artifactId>
   <version>1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>text</name>
-  <url>http://maven.apache.org</url>
+  <description>A small text utility library.</description>
+  <url>https://github.com/collinsrj/text</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <developers>
+    <developer>
+      <id>collinsrj</id>
+      <name>Robert Collins</name>
+      <email>robert.collins24@mail.dcu.ie</email>
+    </developer>
+  </developers>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,9 +39,43 @@
   <build>
     <plugins>
       <plugin>
+      <artifactId>maven-source-plugin</artifactId>
+      <version>2.2.1</version>
+      <executions>
+        <execution>
+          <id>attach-sources</id>
+          <phase>package</phase>
+          <goals><goal>jar-no-fork</goal></goals> 
+        </execution>
+      </executions>
+    </plugin>
+    <plugin> 
+      <artifactId>maven-javadoc-plugin</artifactId> 
+      <executions> 
+        <execution> 
+          <id>attach-javadocs</id>
+          <phase>package</phase>
+          <goals><goal>jar</goal></goals> 
+        </execution> 
+      </executions> 
+    </plugin>      
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
         <version>2.4</version>
+      </plugin>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
